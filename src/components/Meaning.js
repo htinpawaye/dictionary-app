@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import "../css/Meaning.css";
 
 export default function Meaning(props) {
-    return (
-        <div className="Meaning">
-            <h3 className="text-center mt-4">Definition</h3>
-            <p className="text-center">{props.meaning}</p>
-        </div>
-    )
+  return (
+    <div className="Meaning">
+      <h3>{props.meaning.partOfSpeech}</h3>
+      <p>
+        {props.meaning.definition}
+        {props.meaning.example && (
+          <>
+            <br />
+            <br />
+            <em>{props.meaning.example}</em>
+          </>
+        )}
+      </p>
+    </div>
+  );
 }
