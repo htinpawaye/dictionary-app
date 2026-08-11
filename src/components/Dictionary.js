@@ -15,9 +15,20 @@ export default function Dictionary() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    let apiKey = `bf3f9f396370566c3abta48aeo525af1`;
-    let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
-    axios.get(apiUrl).then(handleResponse);
+    // Oxford Dictionaries API
+    let appId = `bf3f9f396370566c3abta48aeo525af1`; // Replace with your app_id
+    let appKey = `bf3f9f396370566c3abta48aeo525af1`; // Replace with your app_key
+    let apiUrl = `https://api.oxforddictionaries.com/api/v2/entries/en-gb/${keyword}`;
+
+    axios
+      .get(apiUrl, {
+        headers: {
+          app_id: appId,
+          app_key: appKey,
+        },
+      })
+      .then(handleResponse)
+      .catch((error) => console.error("Error fetching data: ", error));
   }
 
   function handleInputChange(event) {

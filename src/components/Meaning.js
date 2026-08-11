@@ -6,7 +6,7 @@ export default function Meaning(props) {
   return (
     <div className="Meaning">
       <h3>{props.meaning.partOfSpeech}</h3>
-      <p>
+      <div>
         <strong>Definition:</strong> {props.meaning.definition}
         {props.meaning.example && (
           <>
@@ -17,7 +17,7 @@ export default function Meaning(props) {
             <Synomyns synonyms={props.meaning.synonyms} />
           </>
         )}
-      </p>
+      </div>
     </div>
   );
 }
