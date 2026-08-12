@@ -8,27 +8,20 @@ export default function Dictionary() {
   let [result, setResult] = useState(null);
 
   function handleResponse(response) {
-    console.log(response.data);
-    setResult(response.data);
+    console.log(response.data[0]);
+    setResult(response.data[0]);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    // Oxford Dictionaries API
-    let appId = `bf3f9f396370566c3abta48aeo525af1`; // Replace with your app_id
-    let appKey = `bf3f9f396370566c3abta48aeo525af1`; // Replace with your app_key
-    let apiUrl = `https://api.oxforddictionaries.com/api/v2/entries/en-gb/${keyword}`;
-
+    // Fixed endpoint: change /en_US/ to /en/
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
     axios
-      .get(apiUrl, {
-        headers: {
-          app_id: appId,
-          app_key: appKey,
-        },
-      })
+      .get(apiUrl)
       .then(handleResponse)
-      .catch((error) => console.error("Error fetching data: ", error));
+      .catch((error) => {
+        console.error("Error fetching definition:", error);
+      });
   }
 
   function handleInputChange(event) {
