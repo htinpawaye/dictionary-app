@@ -9,22 +9,19 @@ export default function Meaning(props) {
       {props.meaning.definitions.map(function (definition, index) {
         return (
           <div key={index}>
-            <div>
-              <strong>Definition:</strong> {definition.definition}
-              <br />
-              {/* Only show Example label if an example actually exists */}
-              {definition.example && (
-                <>
-                  <>
-                    <strong>Example:</strong> <em>{definition.example}</em>
-                  </>
-                  <Synonyms synonyms={definition.synonyms} />
-                </>
-              )}
+            <div className="definition">{definition.definition}</div>
+            <div className="example">
+              <em>{definition.example}</em>
             </div>
           </div>
         );
       })}
+      <div className="synonyms">
+        {props.meaning.synonyms && props.meaning.synonyms.length > 0 && (
+          <strong>Similar: </strong>
+        )}
+        <Synonyms synonyms={props.meaning.synonyms} />
+      </div>
     </div>
   );
 }

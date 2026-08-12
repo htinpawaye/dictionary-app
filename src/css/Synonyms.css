@@ -1,0 +1,10 @@
+.Synonyms{
+    margin-left: -32px;
+    margin-top: 8px;
+}
+
+.Synonyms li{
+    display: inline;
+    padding-right: 15px;
+    font-weight: 500;
+}

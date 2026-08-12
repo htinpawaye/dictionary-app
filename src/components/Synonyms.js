@@ -1,5 +1,5 @@
-// Synonyms.jsx
 import React from "react";
+import "../css/Synonyms.css";
 
 export default function Synonyms(props) {
   // Check if synonyms exist AND the array is not empty
